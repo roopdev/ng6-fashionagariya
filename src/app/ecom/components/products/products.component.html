@@ -5,6 +5,16 @@
 		</div>
 		<div class="col-lg-9">
 			All products and filtered products as well
+			<div class="row">
+			   <div class="col">
+			     <ul *ngFor="let product of product$ | async">
+			       <li>{{ product | json}}
+							 <button type="button" mat-button color="primary" [routerLink]="['/products/single/' + product.id]">Single page!</button>
+			       </li>
+			     </ul>
+			   </div>
+			 </div>
+
 		</div>
 	</div>
 </div>

@@ -1,3 +1,7 @@
-<p *ngFor="let category of category$ | async">
-  {{category | json}}
-</p>
+
+<p>All category goes here</p>
+
+
+<ul *ngFor="let category of category$ | async">
+	<li>{{category.name | json}}</li>
+</ul>

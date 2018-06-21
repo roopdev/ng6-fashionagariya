@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
+import { MaterialModule } from '../material/material.module';
 
 
 import { HomeComponent } from './components/home/home.component';
@@ -18,6 +19,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
   imports: [
     CommonModule,
     SharedModule,
+    MaterialModule,
     RouterModule.forChild([
         { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent },

@@ -1,3 +1,57 @@
-<p>
-  contact works!
-</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col section-content">
+			<h3 class="content-header">Get in <strong >Touch with us</strong>....</h3>
+			<p>Need to contact us about something? Reach out, we’d be happy to hear from you.</p>
+		</div>
+	</div>
+	<div class="row contact-section">
+		<div class="col-4">
+			<div >
+				<ul>
+					<li><p>Material design got no social icons</p></li>
+					<li><a href="https://www.instagram.com/fashionagariya/" target="_blank"><mat-icon id="social-in" class="social">mail_outline</mat-icon></a>| Instagram DM</li>
+					<li><a href="https://www.facebook.com/profile.php?id=100014541041842&ref=br_rs" target="_blank"><mat-icon id="social-fb" class="social">mail_outline</mat-icon></a>| Facebook Messenger</li>
+	        <li><a href=""><mat-icon id="social-tw" class="social">mail_outline</mat-icon></a>| Twitter Contact</li>
+	        <li><a href=""><mat-icon id="social-gp" class="social">mail_outline</mat-icon></a>| Google+ Hangouts</li>
+	        <li><a href=""><mat-icon id="social-yt" class="social">mail_outline</mat-icon></a>| YouTube Messenger</li>
+	        <li><a href=""><mat-icon id="social-em" class="social">mail_outline</mat-icon></a>| contact@fashionagariya.com</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-8">
+		<mat-card>
+			<form [formGroup]="contactForm" (ngSubmit)="sendMessage()">
+				<div class="form-row">
+					<div class="col-5 form-line">
+				  	<mat-form-field class="full-width">
+			  	    <input matInput placeholder="Name" formControlName="name" required>
+			  	    <mat-error *ngIf="name.invalid && name.touched">Provide your name.</mat-error>
+			  	  </mat-form-field>
+  			  	<mat-form-field class="full-width">
+  		  	    <input type="email" matInput placeholder="Email" formControlName="email" required>
+  		  	    <mat-error *ngIf="email.invalid && email.touched">Provide your valid email address.</mat-error>
+  		  	  </mat-form-field>
+				  	<mat-form-field class="full-width">
+			  	    <span matPrefix>+91 &nbsp;</span>
+			  	    <input type="tel" matInput placeholder="Mobile number" formControlName="mobile" required>
+			  	    <mat-error *ngIf="mobile.invalid && mobile.touched">Provide your valid mobile number.</mat-error>
+			  	  </mat-form-field>	
+				  </div>
+				  <div class="col-7">
+		  			<mat-form-field class="full-width">
+	  			    <textarea matInput placeholder="Your message ..." formControlName="message" required rows="6"></textarea>
+	  			    <mat-error *ngIf="message.invalid && message.touched">Provide your message.</mat-error>
+	  			  </mat-form-field>
+		  			<button type="submit" mat-raised-button color="primary" class="btn" [disabled]="contactForm.invalid"><mat-icon>send</mat-icon>  Send Message</button>
+					</div>
+				</div>
+			</form>
+		</mat-card>
+		</div>
+	</div>
+</div>
+
+ 
+

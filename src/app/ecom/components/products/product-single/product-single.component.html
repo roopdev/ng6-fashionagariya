@@ -1,3 +1,37 @@
-<p>
-  product-single works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col-5">
+			<p>Display all product images - slider</p>
+			<img [src]="(product | async)?.imgUrl1" class="img-fluid rounded prod-img">
+			<button type="button" mat-raised-button color="accent" >Cart!</button>
+			<button type="button" mat-raised-button color="warn" class="float-right">Shop!</button>
+		</div>
+		<div class="col-7">
+			<h6>{{ (product | async)?.id }}</h6>
+			<p>Product details</p>
+			<p>{{ product | async | json }}</p>
+			<p>{{ (product | async)?.name }}</p>
+			<p>Category: {{ (product | async)?.category }}</p>
+			<p>Brand: {{ (product | async)?.brand }}</p>
+			<p>Description: {{ (product | async)?.description }}</p>
+			<p>Price: {{ (product | async)?.unitPrice }}</p>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-8 offset-2">
+			<h4>Ratings & Reviews</h4>
+			<star-review></star-review>
+			<div class="example-container">
+			  <mat-form-field>
+			    <input matInput placeholder="Title">
+			  </mat-form-field>
+
+			  <mat-form-field>
+			    <textarea matInput placeholder="Description"></textarea>
+			  </mat-form-field>
+			  <button type="button" mat-raised-button color="warn" class="float-right">Submit!</button>
+			</div>
+		</div>
+	</div>
+</div>

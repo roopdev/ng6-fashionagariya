@@ -1,0 +1,15 @@
+<ng-template #t let-fill="fill">
+  <span class="star" [class.full]="fill === 100">
+    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+  </span>
+</ng-template>
+
+<div class="form-group">
+  <ngb-rating [formControl]="ctrl" [starTemplate]="t" max="5"></ngb-rating>
+  <div class="form-text small">
+    <div *ngIf="ctrl.valid" class="text-success"><h6>Thanks!</h6></div>
+    <div *ngIf="ctrl.invalid" class="text-danger"><h6>Please rate the product!</h6></div>
+  </div>
+</div>
+
+<pre>Rating: <b>{{ ctrl.value }}</b></pre>

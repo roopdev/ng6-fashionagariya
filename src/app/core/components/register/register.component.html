@@ -1,3 +1,66 @@
-<p>
-  register works!
-</p>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card border-primary">
+			  <div class="card-body">
+					<mat-horizontal-stepper linear #stepper>
+					  <mat-step [stepControl]="firstFormGroup">
+					    <form [formGroup]="firstFormGroup" class="text-center">
+					      <ng-template matStepLabel>Fill out your name</ng-template>
+					      <mat-form-field>
+					        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" name="name" [(ngModel)]="name" required>
+					      </mat-form-field>
+					      <div >
+					        <button mat-button matStepperNext>Next</button>
+					      </div>
+					    </form>
+					  </mat-step>
+					  <mat-step [stepControl]="secondFormGroup">
+					    <form [formGroup]="secondFormGroup" class="text-center">
+					      <ng-template matStepLabel>Fill out your address</ng-template>
+					      <mat-form-field>
+					        <input matInput placeholder="Address" formControlName="secondCtrl" name="address" [(ngModel)]="address" required>
+					      </mat-form-field><br>
+					      <mat-form-field>
+					        <mat-select placeholder="State" formControlName="thirdCtrl" [(ngModel)]="state" name="state" required>
+			              <mat-option *ngFor="let state of states | async" [value]="state.name">
+			                {{ state.name }}
+			              </mat-option>
+			            </mat-select>
+					      </mat-form-field>
+					      <div>
+					        <button mat-button matStepperPrevious>Back</button>
+					        <button mat-button matStepperNext>Next</button>
+					      </div>
+					    </form>
+					  </mat-step>
+					  <mat-step>
+					    <ng-template matStepLabel>Done</ng-template>
+					    <div class="row">
+					    	<div class="col">
+					    		<mat-card>
+					    			<mat-card-content>
+					    				<p>Name : {{name}}</p>
+					    			</mat-card-content>
+					    		</mat-card>
+					    	</div>
+					    	<div class="col">
+					    		<mat-card>
+					    			<mat-card-content>
+					    				<p>Address: {{address}}</p>
+					    				<p>State: {{state}}</p>
+					    			</mat-card-content>
+					    		</mat-card>
+					    	</div>
+					    </div>
+					    <div class="text-center">
+					      <button mat-button matStepperPrevious>Back</button>
+					      <button mat-button (click)="stepper.reset()">Reset</button>
+					    </div>
+					  </mat-step>
+					</mat-horizontal-stepper>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
