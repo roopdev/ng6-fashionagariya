@@ -1,6 +1,7 @@
 
 export class Blog {
-	$key: string;
+	id?: string;
+	createdAt?: Date;
 	title: string;
 	description: string;
 	body: string;

@@ -9,12 +9,13 @@
 		<div class="col-7">
 			<h6>{{ (product | async)?.id }}</h6>
 			<p>Product details</p>
-			<p>{{ product | async | json }}</p>
-			<p>{{ (product | async)?.name }}</p>
+			<!-- <p>{{ product | async | json }}</p> -->
+			<h4>{{ (product | async)?.name }}</h4>
 			<p>Category: {{ (product | async)?.category }}</p>
 			<p>Brand: {{ (product | async)?.brand }}</p>
 			<p>Description: {{ (product | async)?.description }}</p>
 			<p>Price: {{ (product | async)?.unitPrice }}</p>
+			<p>Views: {{ (product | async)?.views }}</p>
 		</div>
 	</div>
 	<hr>

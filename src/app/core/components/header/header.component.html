@@ -30,32 +30,35 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/contact">Contact</a>
       </li>
-      <li class="nav-item"  routerLinkActive="active">
-        <a class="nav-link" routerLink="/login">Login</a>
+      <ng-container *ngIf="!(authService.user | async)">       
+        <li class="nav-item"  routerLinkActive="active">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item"  routerLinkActive="active">
+          <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+      </ng-container>
+      <li class="nav-item" *ngIf="authService.user | async as user">
+        <p >UID: {{ user.uid }} </p>
       </li>
-      <li class="nav-item"  routerLinkActive="active">
-        <a class="nav-link" routerLink="/register">Register</a>
-      </li>
-      <!-- <li class="nav-item" *ngIf="appUser">
-        <p >UID: {{ appUser.$key }} </p>
-      </li> -->
     </ul>
     
     <!-- Show this for logged in users -->
-    <ul class="navbar-nav" routerLinkActive="active">
+    <ul class="navbar-nav" routerLinkActive="active"  *ngIf="authService.user | async as user">
       <li ngbDropdown class="nav-item dropdown">
         <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
-        User name <img class="rounded-circle profile-img" >
+        {{user.email}} <img class="rounded-circle profile-img" >
         </a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" >Profile</a>
-          <a class="dropdown-item" routerLink="/my/orders" >My Orders</a>
+          <a class="dropdown-item" routerLink="/user/profile">Profile</a>
+          <a class="dropdown-item" routerLink="/user/orders">My Orders</a>
             <a class="dropdown-item" routerLink="/manage/blog">Manage Blogs</a>
             <a class="dropdown-item" routerLink="/manage/product">Manage Products</a> 
-            <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+            <a class="dropdown-item" routerLink="/manage/contact">Manage Contacts</a>
+            <a class="dropdown-item" routerLink="/manage/orders">Manage Orders</a>
           <!-- <ng-container *ngIf="appUser.isAdmin">
           </ng-container> -->
-          <a class="dropdown-item" >Settings</a>
+          <a class="dropdown-item" routerLink="/user/settings">Settings</a>
           <a class="dropdown-item"  (click)="logout()" style="cursor: pointer;">Logout</a>
         </div>
       </li>

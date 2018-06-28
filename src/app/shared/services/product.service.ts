@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { map } from 'rxjs/operators';
+import { map, finalize } from 'rxjs/operators';
 import * as firebase from 'firebase/app';
 
 import { Category } from '../models/category.model';
@@ -14,6 +14,7 @@ export class ProductService {
 	productCollection: AngularFirestoreCollection<Product>;
   categoryFolder;
   productFolder;
+  data: Product;
 
   constructor(private afs: AngularFirestore) { 
   	this.categoryCollection = afs.collection('categories');
@@ -125,6 +126,12 @@ export class ProductService {
         return { id, ...data};
       })
     );
+  }
+
+  // Increase product view count
+  updateViewCount(product: Product, docId: string) {
+    product.views = product.views + 1;
+    return this.productCollection.doc(docId).update(product).catch(err => console.error(err));
   }
 
 }

@@ -9,14 +9,15 @@ import { MaterialModule } from '../material/material.module';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { StarReviewComponent } from './components/star-review/star-review.component';
 
 import { AuthService } from './services/auth.service';
-import { CategoryService } from './services/category.service';
 import { ProductService } from './services/product.service';
-import { UploadService } from './services/upload.service';
 import { StarService } from './services/star.service';
-import { StarReviewComponent } from './components/star-review/star-review.component';
+import { CartLineService } from './services/cart-line.service';
+import { AddressFormComponent } from './components/address-form/address-form.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { StarReviewComponent } from './components/star-review/star-review.compon
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
@@ -31,7 +33,8 @@ import { StarReviewComponent } from './components/star-review/star-review.compon
   ],
   declarations: [
     LoadingSpinnerComponent,
-    StarReviewComponent
+    StarReviewComponent,
+    AddressFormComponent
   ],
   exports: [
     FormsModule,
@@ -40,14 +43,14 @@ import { StarReviewComponent } from './components/star-review/star-review.compon
     AngularFirestoreModule,
     AngularFireStorageModule,
   	NgbModule.forRoot().ngModule,
-    StarReviewComponent
+    StarReviewComponent,
+    AddressFormComponent
   ],
   providers: [
     AuthService,
-    CategoryService,
     ProductService,
-    UploadService,
-    StarService
+    StarService,
+    CartLineService
   ]
 })
 export class SharedModule { }

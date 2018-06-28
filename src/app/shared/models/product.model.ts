@@ -1,6 +1,7 @@
 
 export interface Product {
 	id?: string;
+	createdAt?: Date;
 	category?: string;
 	name?: string;
 	brand?: string;

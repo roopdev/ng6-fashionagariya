@@ -15,14 +15,13 @@ import { SharedModule } from './shared/shared.module';
 import { EcomModule } from './ecom/ecom.module';
 import { BlogModule } from './blog/blog.module';
 import { ManageModule } from './manage/manage.module';
+import { MemberModule } from './member/member.module';
 import { MaterialModule } from './material/material.module';
 import { HomeComponent } from './core/components/home/home.component';
-import { DropZoneDirective } from './shared/directives/drop-zone.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    DropZoneDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +31,7 @@ import { DropZoneDirective } from './shared/directives/drop-zone.directive';
     EcomModule,
     BlogModule,
     ManageModule,
+    MemberModule,
     MaterialModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.firebase),

@@ -20,7 +20,10 @@ import {
   MatSortModule,
   MatPaginatorModule,
   MatDialogModule,
-  MatSlideToggleModule} from '@angular/material';
+  MatSlideToggleModule,
+  MatListModule,
+  MatButtonToggleModule,
+  MatMenuModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -44,7 +47,10 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatMenuModule
   ],
   declarations: [],
   exports: [
@@ -67,7 +73,10 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatListModule,
+    MatButtonToggleModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }

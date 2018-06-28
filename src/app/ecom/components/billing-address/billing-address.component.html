@@ -1,0 +1,86 @@
+<div class="container">
+	<div class="row">
+		<div class="col-8 offset-2">
+			<h4>Billing Address:</h4>
+					<mat-card>
+						<mat-card-content>
+							<form class="example-form" [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+
+							  <table class="example-full-width" cellspacing="0">
+							  	<tr>
+								    <td>
+								    	<mat-form-field class="example-full-width">
+								      	<input matInput placeholder="First name" formControlName="firstName" required>
+								      	<mat-error *ngIf="firstName.invalid && firstName.touched">Provide your Name.</mat-error>
+								    	</mat-form-field>
+								  	</td>
+								    <td>
+								    	<mat-form-field class="example-full-width">
+								      	<input matInput placeholder="Last name" formControlName="lastName" required>
+								      	<mat-error *ngIf="lastName.invalid && lastName.touched">Provide your name.</mat-error>
+								    	</mat-form-field>
+								    </td>
+							  	</tr>
+								</table>
+
+							  <p>
+							    <mat-form-field class="example-full-width">
+							      <textarea matInput placeholder="Address" formControlName="addressLine1" required></textarea>
+							      <mat-error *ngIf="addressLine1.invalid && addressLine1.touched">Provide your address.</mat-error>
+							    </mat-form-field>
+							    <mat-form-field class="example-full-width">
+							      <textarea matInput placeholder="Address 2" formControlName="addressLine2" required></textarea>
+							      <mat-error *ngIf="addressLine2.invalid && addressLine2.touched">Provide your address.</mat-error>
+							    </mat-form-field>
+							  </p>
+
+							  <table class="example-full-width" cellspacing="0">
+							  	<tr>
+								    <td>
+								    	<mat-form-field class="example-full-width">
+								      	<input matInput placeholder="City" formControlName="city" required>
+								      	<mat-error *ngIf="city.invalid && city.touched">Provide your City.</mat-error>
+								    	</mat-form-field>
+								    </td>
+								    <td>
+			    			      <mat-form-field>
+			    			        <mat-select placeholder="State" formControlName="state" required>
+			    	              <mat-option *ngFor="let state of states | async" [value]="state.name">
+			    	                {{ state.name }}
+			    	              </mat-option>
+			    	            </mat-select>
+			    	          </mat-form-field>
+								    </td>
+								    <td>
+								    	<mat-form-field class="example-full-width">
+								      <input matInput placeholder="Postal Code" formControlName="postalCode" required>
+								      <mat-error *ngIf="postalCode.invalid && postalCode.touched">Provide address Postal Code.</mat-error>
+								    	</mat-form-field>
+								    </td>
+							  	</tr>
+								</table>
+							  <table class="example-full-width" cellspacing="0">
+							  	<tr>
+								    <td>
+								    	<mat-form-field class="example-full-width">
+								      	<input matInput placeholder="Country" formControlName="country" required>
+								      	<mat-error *ngIf="country.invalid && country.touched">Provide your Country.</mat-error>
+								    	</mat-form-field>
+								    </td>
+								    <td>
+								    	<mat-form-field class="example-full-width">
+								    		<span matPrefix>+91 &nbsp;</span>
+								      	<input matInput placeholder="Mobile number" formControlName="phone" required>
+								      	<mat-error *ngIf="phone.invalid && phone.touched">Provide phone number.</mat-error>
+								    	</mat-form-field>
+								    </td>
+							  	</tr>
+								</table>
+								<button type="submit" mat-raised-button color="primary" [disabled]="addressForm.invalid">Save Address</button>
+							</form>
+						</mat-card-content>
+					</mat-card>
+
+		</div>
+	</div>
+</div>

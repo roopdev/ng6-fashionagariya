@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'layout-header',
@@ -8,9 +11,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 	navbarCollapsed = true;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+  	this.authService.logout();
   }
 
 }
