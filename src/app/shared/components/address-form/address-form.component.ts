@@ -34,7 +34,7 @@ export class AddressFormComponent implements OnInit {
   saveAddress() {
   	const formValue = this.addressForm.value;
   	console.log(formValue);
-  	this.addressService.saveShippingAddress(formValue).then(() => console.log('Address saved!!!')).catch(err => console.error(err));
+  	// this.addressService.saveShippingAddress(formValue).then(() => console.log('Address saved!!!')).catch(err => console.error(err));
   }
 
   get firstName() { return this.addressForm.get('firstName'); }

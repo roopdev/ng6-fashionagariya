@@ -13,8 +13,15 @@ import { Address } from '../../../shared/models/address.model';
 export class BillingAddressComponent implements OnInit {
 	addressForm: FormGroup;
 	states;
+  userId: string;
   constructor(private addressService: AddressService,
-  						private fb: FormBuilder) { }
+              private authService: AuthService,
+  						private fb: FormBuilder) { 
+    authService.user.subscribe(doc => {
+      console.log(doc.uid);
+      this.userId = doc.uid;
+    });
+  }
 
   ngOnInit() {
   		this.states = this.addressService.getStates();
@@ -34,7 +41,7 @@ export class BillingAddressComponent implements OnInit {
   saveAddress() {
   	const formValue = this.addressForm.value;
   	console.log(formValue);
-  	this.addressService.saveBillingAddress(formValue).then(() => console.log('Address saved!!!')).catch(err => console.error(err));
+  	this.addressService.saveBillingAddress(formValue, this.userId).then(() => console.log('Address saved!!!')).catch(err => console.error(err));
   }
 
   get firstName() { return this.addressForm.get('firstName'); }

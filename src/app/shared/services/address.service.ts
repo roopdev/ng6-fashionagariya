@@ -4,29 +4,24 @@ import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/fires
 import { switchMap, map } from 'rxjs/operators';
 
 import { Address } from '../models/address.model';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddressService {
-  userId: string;
-  constructor(private afs: AngularFirestore, private authService: AuthService, private router: Router) { 
-    authService.user.subscribe(doc => {
-      console.log(doc.uid);
-      this.userId = doc.uid;
-    });
+
+  constructor(private afs: AngularFirestore, private router: Router) { 
   }
 
   getStates() {
   	return this.afs.collection('states', ref => ref.orderBy('name')).valueChanges();
   }
 
-  saveBillingAddress(address: Address) {
+  saveBillingAddress(address: Address, id: string) {
   	address.billing = true;
   	address.shipping = false;
     address.createdAt = new Date();
-    address.userId = this.userId;
+    address.userId = id;
   	return this.afs.collection('address').add(address)
                       .then(doc => {
                         console.log(doc.id)
@@ -35,11 +30,11 @@ export class AddressService {
                       .catch(err => console.error(err));
   }
 
-  saveShippingAddress(address: Address) {
+  saveShippingAddress(address: Address, id: string) {
   	address.shipping = true;
   	address.billing = false;
     address.createdAt = new Date();
-    address.userId = this.userId;
+    address.userId = id;
   	return this.afs.collection('address').add(address).then(doc => console.log(doc.id)).catch(err => console.error(err));  	
   }
 
