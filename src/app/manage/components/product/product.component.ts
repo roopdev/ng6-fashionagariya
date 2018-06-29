@@ -23,8 +23,6 @@ export class ProductComponent implements OnInit {
 
   constructor(private productService: ProductService) { 
     this.product$ = this.productService.getAllProducts();
-    console.log(this.product$);
-
   }
 
   ngOnInit() {
@@ -33,7 +31,6 @@ export class ProductComponent implements OnInit {
       this.dataSource = new MatTableDataSource(doc);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    console.log(doc)
     });
   }
 

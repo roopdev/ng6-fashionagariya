@@ -1,12 +1,43 @@
-
+<div class="container">
 	<div class="row">
-		<div class="col-12">
-			<!-- <ul *ngFor="let address of billingAddress | async">
-				<li>{{ address | json }}</li>
-			</ul> -->
-			<div *ngIf="billingAddress | async as address">
-				{{ address | json }}
-			</div>
+		<div class="col-2">
+			<img class="img-fluid rounded" [src]="user.photoURL">
+		</div>
+		<div class="col-8">
+			<h4>{{user.displayName}}'s profile</h4>			
 		</div>
 	</div>
-
+	<div class="row">
+		<div class="col-12">
+			<mat-tab-group>
+			  <mat-tab label="Personal Details">  
+			  	<mat-list>
+			  	 <mat-list-item>Email : {{user.email}} </mat-list-item>
+			  	 <mat-list-item>Name : {{user.displayName}} </mat-list-item>
+			  	 <mat-list-item>UID : {{user.uid}} </mat-list-item>
+			  	</mat-list>
+			  </mat-tab>
+			  <mat-tab label="Blogs"> Content 2 </mat-tab>
+			  <mat-tab label="Extra"> Content 2 </mat-tab>
+			  <mat-tab label="Billing Address"> 
+			  		<mat-card *ngFor="let address of billingAddress | async">
+			  			<mat-card-content>
+			  				<mat-list>
+			  				 <mat-list-item>Name : {{address.firstName}} {{address.lastName}} </mat-list-item>
+			  				 <mat-list-item>Address Line 1 : {{address.addressLine1}} </mat-list-item>
+			  				 <mat-list-item>Address Line 2 : {{address.addressLine2}} </mat-list-item>
+			  				 <mat-list-item>City : {{address.city}} </mat-list-item>
+			  				 <mat-list-item>State : {{address.state}} </mat-list-item>
+			  				 <mat-list-item>Country : {{address.country}} </mat-list-item>
+			  				 <mat-list-item>Postal Code : {{address.postalCode}} </mat-list-item>
+			  				 <mat-list-item>Phone : {{address.phone}} </mat-list-item>
+			  				 <mat-list-item>Created Date : {{address.createdAt}} </mat-list-item>
+			  				</mat-list>
+			  			</mat-card-content>
+			  		</mat-card>
+			  </mat-tab>
+			  <mat-tab label="Shipping Address"> Content 2 </mat-tab>
+			</mat-tab-group>
+		</div>
+	</div>
+</div>

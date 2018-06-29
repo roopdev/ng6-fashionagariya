@@ -1,4 +1,4 @@
-
+<div class="container">
     <div class="row text-center">
       <div class="col">
        <button mat-raised-button color="primary" [routerLink]="['/manage/category/new']">Add new category</button>        
@@ -78,7 +78,7 @@
             <ng-container matColumnDef="edit">
               <th mat-header-cell *matHeaderCellDef> Edit </th>
               <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" [routerLink]="['/manage/product/new/' + row.id]">
+                <button mat-icon-button color="primary" [routerLink]="['/manage/product/' + row.id]">
                   <mat-icon>edit</mat-icon>
                 </button> 
               </td>
@@ -94,7 +94,7 @@
         
       </div>
     </div>
-
+</div>
 
 
 

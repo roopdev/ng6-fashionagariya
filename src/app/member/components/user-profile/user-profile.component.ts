@@ -10,7 +10,7 @@ import { AddressService } from '../../../shared/services/address.service';
 })
 export class UserProfileComponent implements OnInit {
 	billingAddress;
-	userId: string;
+	user;
   constructor(private authService: AuthService, private addressService: AddressService) { 
     
   }
@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
       this.authService.user.subscribe(doc => {
         console.log(doc.uid);
-        this.userId = doc.uid;
+        this.user = doc;
         this.billingAddress = this.addressService.getUserBillingAddress(doc.uid);
       });
   }

@@ -1,4 +1,4 @@
-
+<div class="container">
 	<div class="row">
 		<div class="col-6">
         <form class="mat-form">
@@ -41,23 +41,21 @@
     <div class="col-6">
       <div class="card">
         <mat-card class="example-card">
-          <mat-card-header>
+          <img mat-card-image src="{{product.imgUrl1}}" alt="{{product.name}}" class="form-img">
+          <mat-card-content>
               <mat-card-title>{{product.name}}</mat-card-title>
               <mat-card-subtitle>Category : {{product.category}}</mat-card-subtitle>
-            </mat-card-header>
-          <img mat-card-image src="{{product.imgUrl1}}" alt="{{product.name}}">
-          <mat-card-content>
             <p>Brand : {{product.brand}}</p>
             <p>Description : {{product.description}} </p>
             <p>Price : {{product.unitPrice}}</p>
             <p>Quantity : {{product.quantity}}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button color="primary">Edit</button>
-            <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="deleteProd()"><mat-icon>delete</mat-icon></button>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
 	</div>
+</div>
 

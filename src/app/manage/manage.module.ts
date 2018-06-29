@@ -21,6 +21,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     RouterModule.forChild([
         { path: 'manage/category/new', component: CategoryFormComponent},
         { path: 'manage/product/new', component: ProductFormComponent},
+        { path: 'manage/product/:id', component: ProductFormComponent},
     		{ path: 'manage/product', component: ProductComponent},
         { path: 'manage/blog/new', component: BlogFormComponent},
         { path: 'manage/blog', component: BlogComponent},

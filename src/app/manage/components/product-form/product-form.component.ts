@@ -16,10 +16,17 @@ export class ProductFormComponent implements OnInit {
 		description: '',
 	}
 	categories$: any;
+  id: string;
 
   constructor(private productService: ProductService,
               private router: Router,
               private route: ActivatedRoute) { 
+    this.id = route.snapshot.paramMap.get('id');
+    if(this.id) {
+      productService.getSingleProduct(this.id).subscribe(doc => {
+        this.product = doc;
+      });
+    }
   	this.categories$ = productService.getAllCategories();
   }
 
@@ -27,8 +34,18 @@ export class ProductFormComponent implements OnInit {
   }
 
   saveProduct() {
-  	console.log(this.product);
-  	this.productService.createProduct(this.product);
+    if(this.id) {
+      this.productService.updateProduct(this.product, this.id);
+    } else {     
+      this.productService.createProduct(this.product);
+    }
+    this.router.navigate(['/manage/product']);
+  }
+
+  deleteProd() {
+    if(!confirm('Are you sure want to delete this product?')) return;
+
+    this.productService.deleteProduct(this.id);
     this.router.navigate(['/manage/product']);
   }
 
