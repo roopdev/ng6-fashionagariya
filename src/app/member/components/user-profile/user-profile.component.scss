@@ -2,3 +2,28 @@
 	padding-top: 20px;
 	padding-bottom: 80px;
 }
+
+/* Container needed to position the button. Adjust the width as needed */
+.img-container {
+	position: relative;
+	width: 50%;
+}
+
+/* Make the image responsive */
+.img-container img {
+  width: 100%;
+  height: auto;
+}
+
+.img-container .edit-btn {
+	position: absolute;
+  top: 90%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+

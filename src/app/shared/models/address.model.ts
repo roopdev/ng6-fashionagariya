@@ -1,7 +1,7 @@
 
 export interface Address {
 	id?: string;
-	createdAt?: Date;
+	createdAt?: number;
 	userId?: string;
 	firstName?: string;
 	lastName?: string;

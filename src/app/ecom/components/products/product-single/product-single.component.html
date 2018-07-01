@@ -1,10 +1,18 @@
 <div class="container">
 	<div class="row">
-		<div class="col-5">
+		<div class="col-5 text-center">
 			<p>Display all product images - slider</p>
-			<img [src]="(product | async)?.imgUrl1" class="img-fluid rounded prod-img">
-			<button type="button" mat-raised-button color="accent" >Cart!</button>
-			<button type="button" mat-raised-button color="warn" class="float-right">Shop!</button>
+			<img [src]="(product | async)?.imgUrl1" class="img-fluid rounded prod-img"><hr>
+			<div *ngIf="!((product | async)?.quantity == 0); else notify">
+				<button type="button" mat-raised-button color="accent" >Cart!</button>
+				<button type="button" mat-raised-button color="warn" class="float-right">Shop!</button>
+			</div>
+			<ng-template #notify>
+				<mat-form-field class="example-full-width">
+				    <input matInput placeholder="Email">
+				  </mat-form-field>
+				<button type="button" mat-raised-button color="warn" class="float-right">Notify Me!</button>
+			</ng-template>
 		</div>
 		<div class="col-7">
 			<h6>{{ (product | async)?.id }}</h6>
@@ -16,6 +24,10 @@
 			<p>Description: {{ (product | async)?.description }}</p>
 			<p>Price: {{ (product | async)?.unitPrice }}</p>
 			<p>Views: {{ (product | async)?.views }}</p>
+			<div *ngIf="!((product | async)?.quantity == 0); else stock">
+				<strong style="color: red">Qty left : {{ (product | async)?.quantity }}</strong>				
+			</div>
+			<ng-template #stock><strong style="color: red">Out of stock</strong></ng-template>
 		</div>
 	</div>
 	<hr>

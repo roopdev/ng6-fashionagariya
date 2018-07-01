@@ -9,6 +9,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { ProductFilterComponent } from './components/products/product-filter/product-filter.component';
 import { ProductSingleComponent } from './components/products/product-single/product-single.component';
 import { BillingAddressComponent } from './components/billing-address/billing-address.component';
+import { SCartComponent } from './components/s-cart/s-cart.component';
 
 @NgModule({
   imports: [
@@ -17,8 +18,9 @@ import { BillingAddressComponent } from './components/billing-address/billing-ad
     MaterialModule,
     RouterModule.forChild([
         { path: 'products', component: ProductsComponent},
-        { path: 'products/:id/:code', component: ProductSingleComponent},
-    		{ path: 'billing-address', component: BillingAddressComponent},
+        { path: 'p/:id/:code', component: ProductSingleComponent},
+        { path: 'billing-address', component: BillingAddressComponent},
+    		{ path: 'user/cart', component: SCartComponent},
 
     	])
   ],
@@ -26,7 +28,7 @@ import { BillingAddressComponent } from './components/billing-address/billing-ad
   	ProductsComponent, 
   	ProductFilterComponent, 
   	ProductSingleComponent, 
-    BillingAddressComponent
+    BillingAddressComponent, SCartComponent
   ]
 })
 export class EcomModule { }

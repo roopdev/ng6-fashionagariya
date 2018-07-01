@@ -20,7 +20,7 @@ export class AddressService {
   saveBillingAddress(address: Address, id: string) {
   	address.billing = true;
   	address.shipping = false;
-    address.createdAt = new Date();
+    address.createdAt = new Date().getTime();
     address.userId = id;
   	return this.afs.collection('address').add(address)
                       .then(doc => {
@@ -33,7 +33,7 @@ export class AddressService {
   saveShippingAddress(address: Address, id: string) {
   	address.shipping = true;
   	address.billing = false;
-    address.createdAt = new Date();
+    address.createdAt = new Date().getTime();
     address.userId = id;
   	return this.afs.collection('address').add(address).then(doc => console.log(doc.id)).catch(err => console.error(err));  	
   }

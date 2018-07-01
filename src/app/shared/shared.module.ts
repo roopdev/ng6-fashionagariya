@@ -12,12 +12,15 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { StarReviewComponent } from './components/star-review/star-review.component';
+import { AddressFormComponent } from './components/address-form/address-form.component';
+import { EditProfileImgComponent } from './components/edit-profile-img/edit-profile-img.component';
+import { EditProfileNameComponent } from './components/edit-profile-name/edit-profile-name.component';
 
 import { AuthService } from './services/auth.service';
 import { ProductService } from './services/product.service';
 import { StarService } from './services/star.service';
 import { CartLineService } from './services/cart-line.service';
-import { AddressFormComponent } from './components/address-form/address-form.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   imports: [
@@ -34,8 +37,15 @@ import { AddressFormComponent } from './components/address-form/address-form.com
   declarations: [
     LoadingSpinnerComponent,
     StarReviewComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    EditProfileImgComponent,
+    EditProfileNameComponent,
   ],
+  entryComponents: [
+      AddressFormComponent,
+      EditProfileImgComponent,
+      EditProfileNameComponent
+    ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
@@ -44,12 +54,14 @@ import { AddressFormComponent } from './components/address-form/address-form.com
     AngularFireStorageModule,
   	NgbModule.forRoot().ngModule,
     StarReviewComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    EditProfileImgComponent
   ],
   providers: [
     AuthService,
     ProductService,
     StarService,
+    UserService,
     CartLineService
   ]
 })

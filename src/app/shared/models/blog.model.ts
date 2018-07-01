@@ -1,7 +1,7 @@
 
 export class Blog {
 	id?: string;
-	createdAt?: Date;
+	createdAt?: number;
 	title: string;
 	description: string;
 	body: string;

@@ -16,6 +16,7 @@ export class ContactService {
   }
 
   saveContact(contact) {
+    contact.createdAt = new Date().getTime();
   	return this.contactCollection.add(contact)
   								.then(doc => console.log(doc.id))
   								.catch(err => console.error(err));

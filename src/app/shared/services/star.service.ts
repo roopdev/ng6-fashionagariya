@@ -7,6 +7,7 @@ export interface Star {
 	userId: any;
 	productId: any;
 	value: number;
+  createdAt: number;
 }
 
 @Injectable({
@@ -31,7 +32,7 @@ export class StarService {
   // Create or update star
   setStar(userId, productId, value) {
   	//Star document data
-  	const star: Star = { userId, productId, value };
+  	const star: Star = { userId, productId, value, createdAt: new Date().getTime() };
 
   	// Custom doc ID for relationship
   	const starPath = 'stars/${star.userId}_${star.productId}';

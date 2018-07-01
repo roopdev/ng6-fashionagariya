@@ -1,0 +1,8 @@
+<form class="register-form" [formGroup]="nameForm" (ngSubmit)="editName()">
+	<mat-form-field class="form-width">
+	  <input matInput placeholder="New Name" formControlName="displayName" required>
+	  <mat-error *ngIf="displayName.invalid && displayName.touched">Please provide updated name.</mat-error>
+	</mat-form-field>
+	<button type="button" color="warn" mat-button mat-dialog-close>Cancel</button>
+	<button type="submit" mat-raised-button color="primary" [disabled]="nameForm.invalid" class="float-right">Save</button>
+</form>

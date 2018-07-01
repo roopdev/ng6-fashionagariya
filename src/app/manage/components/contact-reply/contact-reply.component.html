@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<mat-card class="example-card">
+			<mat-card class="contact-card">
 			  <mat-card-content>
 			    <mat-card-title>Sender name:  {{(contact | async)?.name}}</mat-card-title>
 			    <mat-card-subtitle>Email:  {{(contact | async)?.email}}</mat-card-subtitle>
@@ -9,6 +9,9 @@
 			  	<p>Message:</p>
 			    <p>
 			      {{(contact | async)?.message}}
+			    </p>
+			    <p>
+			      Send at - {{(contact | async)?.createdAt | date:'medium'}}
 			    </p>
 			  </mat-card-content>
 			  <mat-card-actions>

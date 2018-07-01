@@ -2,7 +2,7 @@ import { Product } from './product.model';
 
 export interface Cart {
 	id?: string;
-	createdAt?: Date;
+	createdAt?: number;
 	product?: Product;
 	userId?: string;
 	productCount?: number;

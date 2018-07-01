@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AddressService } from '../../services/address.service';
@@ -13,8 +14,17 @@ import { Address } from '../../models/address.model';
 export class AddressFormComponent implements OnInit {
 	addressForm: FormGroup;
 	states;
+  userId: string;
   constructor(private addressService: AddressService,
-  						private fb: FormBuilder) { }
+  						private fb: FormBuilder,
+              private authService: AuthService,
+              public dialogRef: MatDialogRef<AddressFormComponent>,
+                  @Inject(MAT_DIALOG_DATA) public data: any) { 
+    authService.user.subscribe(doc => {
+      console.log(doc.uid);
+      this.userId = doc.uid;
+    });
+  }
 
   ngOnInit() {
   	this.states = this.addressService.getStates();
@@ -34,7 +44,8 @@ export class AddressFormComponent implements OnInit {
   saveAddress() {
   	const formValue = this.addressForm.value;
   	console.log(formValue);
-  	// this.addressService.saveShippingAddress(formValue).then(() => console.log('Address saved!!!')).catch(err => console.error(err));
+  	this.addressService.saveShippingAddress(formValue, this.userId).then(() => console.log('Address saved!!!')).catch(err => console.error(err));
+    this.dialogRef.close("Address Saved!!")
   }
 
   get firstName() { return this.addressForm.get('firstName'); }

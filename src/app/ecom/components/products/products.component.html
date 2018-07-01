@@ -22,11 +22,11 @@
 			</div>
 			<hr>
 			<div class="row">
-			   <div class="col-3" *ngFor="let product of product$ | async">
+			   <div class="col-lg-3 col-sm-1" *ngFor="let product of product$ | async">
 			   	<mat-card class="example-card text-center" >
-			   	  <a [routerLink]="['/products/' + product.id + '/' + product.code]"><img mat-card-image [src]="product.imgUrl1" class="prod-img"></a>
+			   	  <a [routerLink]="['/p/' + product.id + '/' + product.code]"><img mat-card-image [src]="product.imgUrl1" class="prod-img"></a>
 			   	  <mat-card-content>
-			   	  	<a [routerLink]="['/products/' + product.id + '/' + product.code]"><h6>{{product.name}}</h6></a>
+			   	  	<a [routerLink]="['/p/' + product.id + '/' + product.code]"><h6>{{product.name}}</h6></a>
 			   	    <p>
 			   	      {{product.brand}}
 			   	    </p>
@@ -36,9 +36,10 @@
 			   	    <button mat-icon-button color="warn">
 		   	        <mat-icon>favorite</mat-icon>
 		   	      </button>
-    	   	    <button mat-icon-button color="primary">
-       	        <mat-icon>add_shopping_cart</mat-icon>
-       	      </button>
+  		   	    <button mat-icon-button color="primary" *ngIf="!(product.quantity == 0); else elseBlock">
+  	   	        <mat-icon>add_shopping_cart</mat-icon>
+  	   	      </button>
+    	   	    <ng-template #elseBlock>Out of stock</ng-template>
 			   	  </mat-card-actions>
 			   	</mat-card>
 			   </div>

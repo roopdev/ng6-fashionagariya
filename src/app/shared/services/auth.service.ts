@@ -74,6 +74,7 @@ export class AuthService {
   private saveUserData(user, name) {
     const data: User = {
       uid: user.uid,
+      createdAt: new Date().getTime(),
       email: user.email,
       displayName: user.displayName || name,
       photoURL: user.photoURL || 'https://firebasestorage.googleapis.com/v0/b/ng6-fashionagariya.appspot.com/o/profileImgs%2Fblank-profile.png?alt=media&token=f872adfa-c903-434c-9752-45fea4b2d6d7',

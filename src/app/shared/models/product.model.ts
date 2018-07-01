@@ -1,7 +1,7 @@
 
 export interface Product {
 	id?: string;
-	createdAt?: Date;
+	createdAt?: number;
 	category?: string;
 	name?: string;
 	brand?: string;

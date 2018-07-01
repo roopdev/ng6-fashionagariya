@@ -14,7 +14,7 @@ export class ProductService {
 	productCollection: AngularFirestoreCollection<Product>;
   categoryFolder;
   productFolder;
-  data: Product;
+
 
   constructor(private afs: AngularFirestore) { 
   	this.categoryCollection = afs.collection('categories');
@@ -37,6 +37,7 @@ export class ProductService {
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
             category.imgUrl = downloadURL;
             category.isActive = true;
+            category.createdAt = new Date().getTime();
             console.log('File available at: ', category.imgUrl);
             // Save category in firestore
             return this.categoryCollection.add(category)
@@ -87,6 +88,7 @@ export class ProductService {
             product.code = 'FNPRD' + Math.floor(new Date().valueOf() * Math.random());
             product.purchases = 0;
             product.views = 0;
+            product.createdAt = new Date().getTime();
             console.log('File available at: ', product.imgUrl1);
             // Save category in firestore
             this.productCollection.add(product)
