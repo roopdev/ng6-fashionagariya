@@ -34,10 +34,6 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  updateProduct(product, id) {
-    this.productService.updateProduct(product, id);
-  }
-
   deleteProduct(id) {
     if(!confirm('Are you sure want to delete this product?')) return;
     this.productService.deleteProduct(id);

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-orders.component.scss']
 })
 export class UserOrdersComponent implements OnInit {
+	panelOpenState = false;
 
   constructor() { }
 

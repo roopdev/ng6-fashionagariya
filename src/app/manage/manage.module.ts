@@ -12,6 +12,7 @@ import { CategoryFormComponent } from './components/category-form/category-form.
 import { ContactComponent } from './components/contact/contact.component';
 import { ContactReplyComponent } from './components/contact-reply/contact-reply.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { MainConsoleComponent } from './components/main-console/main-console.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { OrdersComponent } from './components/orders/orders.component';
         { path: 'manage/blog', component: BlogComponent},
         { path: 'manage/contact/:id', component: ContactReplyComponent},
         { path: 'manage/contact', component: ContactComponent},
-    		{ path: 'manage/orders', component: OrdersComponent}
+        { path: 'manage/orders', component: OrdersComponent},
+    		{ path: 'manage/main', component: MainConsoleComponent}
     	])
   ],
   declarations: [
@@ -37,7 +39,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     BlogFormComponent, 
     CategoryFormComponent, 
     ContactComponent, 
-    ContactReplyComponent, OrdersComponent
+    ContactReplyComponent, OrdersComponent, MainConsoleComponent
   ],
   exports: [
   ]

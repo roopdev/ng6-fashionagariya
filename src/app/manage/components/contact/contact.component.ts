@@ -7,7 +7,7 @@ import { Contact } from '../../../shared/models/contact.model';
 
 
 @Component({
-  selector: 'app-contact',
+  selector: 'manage-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
